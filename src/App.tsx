@@ -1,34 +1,27 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import { ThemeProvider } from "@/components/theme-provider"
+import { Card } from '@/components/ui/card'
+import { Button } from "@/components/ui/button"
+import { useState } from "react"
+import { generateDescription } from "@/lib/generator"
 
 function App() {
-  const [count, setCount] = useState(0)
-
+  const [roffleText, setRoffleText] = useState("Hey folks...")
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+      <div className="flex h-full flex-col items-center justify-center bg-background">
+        <Card className="flex flex-col items-center justify-center gap-4 p-8 w-150 h-150">
+          <div className="text-2xl font-bold h-full text-center content-center">
+            {roffleText}
+          </div>
+          <Button variant="secondary" className="w-fit" onClick={() => {
+            setRoffleText(generateDescription())
+          }}>
+            Generate
+          </Button>
+        </Card>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    </ThemeProvider>
   )
 }
 
