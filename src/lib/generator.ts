@@ -80,11 +80,11 @@ const middles = [
     "From there, it was just a matter of rounding out the rest of the build so there's something relevant to multiply",
     "It was just a matter of finding enough {card}s to cover the rest of my scoring before I got jump scared by {num} {spectral} cards in quick succession",
     "but a complete absence of reliable molt sources left the build just scraping by for much of the run",
-    "It was just a matter of getting my money sorted back out in order to find the {card}s I needed.",
-    "This paired with a great money engine made it possible to set up my {card}s to carry a {joker} pretty deep and endless.",
-    "It was {enchantment}s on {enchantment} {card}s that sent my money skyrocketing and allowed me to roll aggressively to find the pieces I needed.",
-    "This extra money allowed for plenty of rolling to find the scoring jokers I needed to set up an interesting {build}.",
-    "but it was a splash of all things that kept the run afloat for a few rounds when I was constantly unable to draw the right suits for a {joker}.",
+    "It was just a matter of getting my money sorted back out in order to find the {card}s I needed",
+    "This paired with a great money engine made it possible to set up my {card}s to carry a {joker} pretty deep and endless",
+    "It was {enchantment}s on {enchantment} {card}s that sent my money skyrocketing and allowed me to roll aggressively to find the pieces I needed",
+    "This extra money allowed for plenty of rolling to find the scoring jokers I needed to set up an interesting {build}",
+    "but it was a splash of all things that kept the run afloat for a few rounds when I was constantly unable to draw the right suits for a {joker}",
 ];
 
 const endings = ["Enjoy the video."];
