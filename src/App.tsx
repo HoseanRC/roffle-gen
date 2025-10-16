@@ -22,7 +22,6 @@ const GOOGLE_FONTS = [
   "Cormorant Garamond",
   "Source Sans Pro",
   "BBH Sans Bogle",
-  "Playwrite Deutschland Grundschrift Guides",
   "Alfa Slab One",
   "Play",
   "Frijole",
