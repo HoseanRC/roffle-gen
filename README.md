@@ -1,75 +1,70 @@
-# React + TypeScript + Vite
+`Hello folks`
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Roffle Intro Generator
 
-Currently, two official plugins are available:
+A website to generate roffle intros
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Website UI: [src/App.tsx](src/App.tsx)
+- Core logic: [src/lib/generator.ts](src/lib/generator.ts)
 
-## React Compiler
+## What this project does
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+it's basic: pressing generate will generate an intro and display it with a ransom font.
 
-Note: This will impact Vite dev & build performances.
+## How generation works (high level)
 
-## Expanding the ESLint configuration
+Generation is handled by the [`generateDescription`](src/lib/generator.ts) function in [src/lib/generator.ts](src/lib/generator.ts). Key parts:
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- RNG: a small seeded pseudo-random PRNG implemented as the [`RNG` class](src/lib/generator.ts). It supports deterministic output when a seed is provided.
+  - Reference: [`RNG`](src/lib/generator.ts)
+- Template expansion: many sentence fragments contain token placeholders like `{joker}`, `{spectral}`, `{build}`, etc. These are expanded by `fillTemplate` in [src/lib/generator.ts](src/lib/generator.ts).
+  - Reference: [`fillTemplate`](src/lib/generator.ts)
+- Article handling: helper `a_an` chooses "a" vs "an" for natural phrasing.
+  - Reference: [`a_an`](src/lib/generator.ts)
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+The generator composes:
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+1. A starter phrase.
+2. two middle sentences assembled from templates and token lists (`jokers`, `spectrals`, `buildTypes`, etc.).
+3. An optional modifier and an ending.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+See the full generator implementation here: [src/lib/generator.ts](src/lib/generator.ts) and the exported API: [`generateDescription`](src/lib/generator.ts).
+
+## Running locally
+
+clone this repository:
+
+```bash
+git clone https://github.com/HoseanRC/roffle-gen
+cd roffle-gen
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+install libraries:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+pnpm install
 ```
+
+run dev server:
+
+```bash
+pnpm dev
+```
+
+build the page:
+
+```bash
+pnpm dev
+```
+
+## Contributing / Collaboration
+
+Contributions and collaborations are welcome.
+
+adding and improving the templates makes this project stronger.
+
+Open a PR or create an issue.
+
+Happy to accept any reasonable improvements.
+
+`Enjoy the video.`
