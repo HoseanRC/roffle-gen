@@ -1,5 +1,7 @@
 `Hello folks`
 
+---
+
 # Roffle Intro Generator
 
 A website to generate roffle intros
@@ -66,5 +68,7 @@ adding and improving the templates makes this project stronger.
 Open a PR or create an issue.
 
 Happy to accept any reasonable improvements.
+
+---
 
 `Enjoy the video.`
