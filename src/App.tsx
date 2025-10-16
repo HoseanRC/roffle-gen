@@ -5,6 +5,8 @@ import { Button } from "@/components/ui/button"
 import { useState, useEffect } from "react"
 import { generateDescription } from "@/lib/generator"
 import { motion, AnimatePresence } from "motion/react"
+import { GitBranch, PenLine } from 'lucide-react'
+import { SiGithub } from '@icons-pack/react-simple-icons'
 
 const GOOGLE_FONTS = [
   "Lobster",
@@ -52,6 +54,11 @@ function App() {
         <Card
           className="flex flex-col items-center justify-center gap-4 p-8 w-120 transition-all duration-300 overflow-hidden"
         >
+          <Button variant="secondary" className="w-fit content-center" onClick={() =>
+            window.open("https://github.com/hoseanrc/roffle-gen", "_blank")
+          }>
+            <SiGithub /> GitHub <GitBranch />
+          </Button>
           <AnimatePresence mode="wait">
             <motion.p
               key={roffleText}
@@ -66,7 +73,7 @@ function App() {
             </motion.p>
           </AnimatePresence>
           <Button variant="secondary" className="w-fit" onClick={handleGenerate}>
-            Generate
+            <PenLine /> Generate
           </Button>
         </Card>
       </div>
