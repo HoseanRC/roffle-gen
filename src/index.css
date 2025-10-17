@@ -120,5 +120,5 @@
 }
 
 #root {
-  @apply h-dvh;
+  @apply h-dvh p-0;
 }

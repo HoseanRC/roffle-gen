@@ -52,26 +52,28 @@ function App() {
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
       <div className="flex h-full flex-col items-center justify-center bg-background">
         <Card
-          className="flex flex-col items-center justify-center gap-4 p-8 w-120 transition-all duration-300 overflow-hidden"
+          className="flex flex-col items-center justify-center gap-4 p-8 h-full w-120 max-w-full transition-all duration-300 overflow-hidden"
         >
           <Button variant="secondary" className="w-fit content-center" onClick={() =>
             window.open("https://github.com/hoseanrc/roffle-gen", "_blank")
           }>
             <SiGithub /> GitHub <GitBranch />
           </Button>
-          <AnimatePresence mode="wait">
-            <motion.p
-              key={roffleText}
-              initial={{ opacity: 0, y: 6 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -6 }}
-              transition={{ duration: 0.3, delay: 0.2 }}
-              className="text-2xl font-bold h-full text-center content-center min-h-150"
-              style={{ fontFamily: `'${fontFamily}', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial` }}
-            >
-              {roffleText}
-            </motion.p>
-          </AnimatePresence>
+          <div className='h-full w-full flex items-center justify-center overflow-auto tp-10'>
+            <AnimatePresence mode="wait">
+              <motion.p
+                key={roffleText}
+                initial={{ opacity: 0, y: 6 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -6 }}
+                transition={{ duration: 0.3, delay: 0.2 }}
+                className="text-2xl font-bold max-h-full"
+                style={{ fontFamily: `'${fontFamily}', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial` }}
+              >
+                {roffleText}
+              </motion.p>
+            </AnimatePresence>
+          </div>
           <Button variant="secondary" className="w-fit" onClick={handleGenerate}>
             <PenLine /> Generate
           </Button>
